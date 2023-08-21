@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="overlay">
+        <div class="wrapper">
+            <header>
+                <h1 class="subjectName"><i class="fa-regular fa-square-check" style="color: #2ec866;"></i> Computer Graphics</h1>
+                <ul>
+                    <li><a href="#bp">Book pdf</a></li>
+                    <li><a href="#pt">Presentataions</h4></a></li>
+                    <li><a href="#vd">Video lectures</a></li>
+                    <li><a href="#ep">Exam papers</a></li>
+                </ul>
+            </header>
+
+            <div class="bookpdf" id = "bp">
+                <h1 class="hidden"><i class="fa fa-book fa-lg" style="color:#2ec866;" aria-hidden="true"></i> Books</h1>
+                <div class="bookpdfs">
+                    <div class="booksub hidden">
+                        <p>Detailed Explanation & In Depth Information Of Entire Subject.</p>
+                        <img src="img/tg.png" alt="">
+                        <div class="down">
+                            <a id="tecnical">View</a>
+                        </div>
+                    </div>
+    
+                    <div class="booksub hidden">
+                        <p>Scoring Marks In University Exam's Get Easy With Techknowledge.</p>
+                        <img src="img/tk.png" alt="">
+                        <div class="down">
+                            <a id="techknowlwdge">View</a>
+                        </div>
+                    </div>
+
+                    <div class="booksub hidden">
+                        <p>Provides Comprehensive Coverage Of The Entire Syllabus At Your Fingertips.</p>
+                        <img src="img/dec.png" alt="">
+                        <div class="down">
+                            <a id="decode">View</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="video" id="vd">
+                <h1 class="hidden"><i class="fa-brands fa-youtube" style="color:#2ec866;"></i> lectures</h1>
+                <div class="content">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/uTBKa1PSyf8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="suggest hidden">
+                        <h3>Recommended channels</h3>
+                        <div class="list">
+                            <ul>
+                                <li><a href="https://www.youtube.com/channel/UChTsiSbpTuSrdOHpXkKlq6Q">5 Minutes Engineering</a></li>
+                                <li><a href="https://youtube.com/@MakeItEasypadhai">Make It Easy #padhai</a></li>
+                                <li><a href="https://youtube.com/@ashakhilrani">asha khilrani</a></li>
+                            <ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="exampapers" id="ep">
+                <h1 class="hidden"><i class="fa-solid fa-clipboard-question" style="color: #2ec866;"></i> Previous years papers</h1>
+                <ul class = "hidden">
+                    <li><p>Insem Papers</p><a href="">View</a></li>
+                    <li><p>Insem Papers</p><a href="">View</a></li>
+                    <li><p>Insem Papers</p><a href="">View</a></li>
+                    <li><p>Insem Papers</p><a href="">View</a></li>
+                </ul>
+            </div>
+
+            <div class="ppt" id="pt">
+                
+                <div class="unit1 hidden">
+                    <h1>PDFs uploaded by teachers</h1>
+                    <div id="buttonContainer"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries)=>{
+            entries.forEach((entry)=>{
+                if(entry.isIntersecting){
+                    entry.target.classList.add('show');
+                }
+                else{
+                    entry.target.classList.remove('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el)=>observer.observe(el));
+    </script>
+</body>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+    import { getStorage, ref, uploadBytes, deleteObject, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-storage.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCoXHbOA8kkKjhH3XILkzuAEKIsaWNSj04",
+        authDomain: "samplelogin-9a79b.firebaseapp.com",
+        databaseURL: "https://samplelogin-9a79b-default-rtdb.firebaseio.com",
+        projectId: "samplelogin-9a79b",
+        storageBucket: "samplelogin-9a79b.appspot.com",
+        messagingSenderId: "317364916728",
+        appId: "1:317364916728:web:41d2c0283cbd11e9a8c60d"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const storage = getStorage(app);
+    var fileitem;
+    var filename;
+
+    // document.getElementById('deletebtn').addEventListener('click', function () {
+    //     const desertRef = ref(storage, 'documents/unit1.pdf');
+
+    //     // Delete the file
+    //     deleteObject(desertRef).then(() => {
+    //         // File deleted successfully
+    //         console.log("File deleted successfully");
+    //     }).catch((error) => {
+    //         // Uh-oh, an error occurred!
+    //         console.log("Uh-oh, an error occurred!");
+    //     });
+
+    // })
+    const container = document.getElementById('buttonContainer');
+    // function checkfile() {
+    //     // const desertRef = ref(storage, 'documents/unit1.pdf');
+    //     // if(desertRef){
+    //     //     document.getElementById('inp').style.visibility= "hidden";
+    //     // }
+    //     getDownloadURL(ref(storage,"DELD/unit1.pdf"))
+    //         .then((url) => {
+    //             const button = document.createElement('button');
+    //             button.textContent = 'Button ' + i;
+    //             container.appendChild(button);
+    //         })
+    //         .catch((error) => {
+    //             // Handle any errors
+    //             console.log("file not found");
+    //         });
+    // }
+    function displaybtn(){
+        for (let i = 1; i <= 6; i++) {
+            getDownloadURL(ref(storage,"CG/unit"+i+".pdf"))
+            .then((url) => {
+                const button = document.createElement('a');
+                button.textContent = 'unit-' + i;
+                button.href= url;
+                container.appendChild(button);
+            })
+            .catch((error) => {
+                // Handle any errors
+                console.log("file not found");
+            });
+    }
+    }
+    displaybtn();
+
+    document.getElementById('tecnical').addEventListener('click' , function() {
+        getDownloadURL(ref(storage,"documents/(CG) Computer Graphics Text Book.pdf"))
+            .then((url) => {
+               window.open(url,'_blank');
+            })
+            .catch((error) => {
+                // Handle any errors
+                console.log("file not found");
+            });
+
+    })
+    document.getElementById('techknowlwdge').addEventListener('click' , function() {
+        getDownloadURL(ref(storage,"documents/(CG) Computer Graphics Text Book.pdf"))
+            .then((url) => {
+                window.open(url,'_blank');
+            })
+            .catch((error) => {
+                // Handle any errors
+                console.log("file not found");
+            });
+
+    })
+    document.getElementById('decode').addEventListener('click' , function() {
+        getDownloadURL(ref(storage,"documents/(CG) Computer Graphics Text Book.pdf"))
+            .then((url) => {
+                window.open(url,'_blank');
+            })
+            .catch((error) => {
+                // Handle any errors
+                console.log("file not found");
+            });
+
+    })
+    
+
+
+
+
+</script>
+</html>
