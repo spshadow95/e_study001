@@ -2,7 +2,7 @@
 #include "ui_koch_curve.h"
 #include <math.h>
 
-QImage img(500, 500, QImage::Format_RGB888);
+QImage img(500, 400, QImage::Format_RGB888);
 QColor bgColor(qRgb(0,0,0));
 QColor color(qRgb(230, 230, 230));
 
